@@ -1,0 +1,25 @@
+\(\S\+\)\.var$
+	var {{$1}} = {{_cursor_}}
+
+\(\S\+\)\.iferr$
+	if {{$1}} != nil {
+		return {{$1}}
+	}
+	{{_cursor_}}
+
+\(\S\+\)\.fatal$
+	if {{$1}} != nil {
+		log.Fatal({{$1}})
+	}
+	{{_cursor_}}
+
+\(\S\+\)\.log$
+	log.Println({{$1}})
+	{{_cursor_}}
+
+\(\S\+\)\.close$
+	defer {{$1}}.Close()
+	{{_cursor_}}
+
+\(\S\+\)\.query$
+	{{$1}}.Query("{{_cursor_}}")

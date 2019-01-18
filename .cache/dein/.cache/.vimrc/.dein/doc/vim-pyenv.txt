@@ -1,0 +1,255 @@
+*vim-pyenv.txt* Activate a pyenv Python within Vim
+
+Version: 2.0
+Author:  Alisue <lambdalisue@hashnote.net>		*vim-pyenv-author*
+License: MIT license  {{{
+    Copyright (c) 2014 Alisue, hashnote.net
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+}}}
+  
+
+CONTENTS					*vim-pyenv-contents*
+
+Introduction				|vim-pyenv-introduction|
+Usage					|vim-pyenv-usage|
+Requirements				|vim-pyenv-requirements|
+Interface				|vim-pyenv-interface|
+  Commands				|vim-pyenv-commands|
+  Functions				|vim-pyenv-functions|
+  Configurations			|vim-pyenv-configurations|
+  Autocmd				|vim-pyenv-autocmd|
+FAQ					|vim-pyenv-faq|
+
+
+===============================================================================
+INTRODUCTION					*vim-pyenv-introduction*
+
+*vim-pyenv* allows you to activate and deactivate the pyenv Python correctly
+in a live Vim session.
+
+pyenv (https://github.com/yyuu/pyenv) is a simple Python version management
+system and users can change the Python versions in a simple way.
+However, if you use pyenv to switch the Python version or virtualenv, the
+omni-completion would not work correctly.
+This is because Vim refers to the system Python and does not know anything
+about the pyenv Python, especially the packages you installed on the pyenv
+Python.
+
+vim-pyenv activates the pyenv Python and adds the external Python library
+search path (PYTHONPATH) to Vim's internal Python PYTHONPATH.
+Thus, with vim-pyenv, your jedi-vim(https://github.com/davidhalter/jedi-vim)
+or any kind of Python omni-completion system returns a correct completion list.
+
+Additionally, vim-pyenv supports Vim's dual Python 2 and 3 system.
+If your Vim is compiled with +python and +python3, vim-pyenv automatically
+synchronizes the Python version to the external Python version.
+
+
+===============================================================================
+USAGE						*vim-pyenv-usage*
+
+Assuming that you have three pyenv-virtualenv environments (simply called
+virtualenvs) and you are now in one of them, called A.
+If you open Vim from a terminal, vim-pyenv automatically detects the
+current virtualenv and activates it in the Vim session.
+
+If you want to change the virtualenv from A to B then do:
+>
+    :PyenvActivate B
+<
+To deactivate the virtualenv:
+>
+    :PyenvDeactivate
+<
+
+If your Vim is compiled with +python and +python3, the internal Python version
+is automatically synchronized to the external Python version.
+
+
+===============================================================================
+Requirements					*vim-pyenv-requirements*
+
+Requirements:
+* Vim compiled with +python and/or +python3
+* pyenv command in your terminal
+
+Recommended:
+* jedi-vim for omni-completion
+
+===============================================================================
+INTERFACE					*vim-pyenv-interface*
+
+-------------------------------------------------------------------------------
+COMMANDS					*vim-pyenv-commands*
+
+
+:PyenvActivate [{name}]					*:PyenvActivate*
+    Activate a pyenv Python. The name of the pyenv Python can be completed
+    with <tab> at the command line.
+
+    If the name is not specified, the name will be guessed based on pyenv's
+    current settings.
+
+:PyenvDeactivate					*:PyenvDeactivate*
+    Deactivate the current pyenv Python.
+
+:PyenvCreateCtags					*:PyenvCreateCtags*
+    Create 'ctags' of current activated pyenv in $(pyenv prefix)/ctags.
+    It requires |g:pyenv#ctags_exec| to be correctly specified.
+
+:PyenvAssignCtags					*:PyenvAssignCtags*
+    Assign 'ctags' of current activated pyenv at $(pyenv prefix)/ctags to
+    |tags-option| if the file is not listed in |&l:tags|.
+
+:PyenvWithdrawCtags					*:PyenvWithdrawCtags*
+    Withdraw 'ctags' of current activated pyenv at $(pyenv prefix)/ctags from
+    |tags-option| if the file is listed in |&l:tags|.
+
+
+-------------------------------------------------------------------------------
+FUNCTIONS					*vim-pyenv-functions*
+
+pyenv#info#format({format})				*pyenv#info#format()*
+
+	Return a current pyenv status in a specified {format}. The following
+	format strings are available to use in the {format}.
+
+	'iv' A version of the internal python
+	'im' A major version of the internal python
+	'ev' A version of the external python
+	'em' A major version of the external python
+	'sv' A selected version name
+	'ss' A selected version names
+	'av' An activated version name
+
+	And the following rules are applied to the {format}.
+
+	1. If a format string is leaded by %, the '%' and the format string
+	   will be translated into a corresponding informations.
+	   E.g: '%iv' -> '2.7.9' or ''
+	2. If a format string is leaded by %{left|}, the '%{left|}' and the
+	   format string will be translated into a corresponding informations
+	   and 'left' will be inserted at left side of the translation if the
+	   translation is not an empty string.
+	   E.g: '%{#}iv' -> '#2.7.9' or ''
+	3. If a format string is leaded by %{|right}, the '%{|right}' and the
+	   format string will be translated into a corresponding informations
+	   and 'right' will be inserted at right side of the translation if the
+	   translation is not an empty string.
+	   E.g: '%{|$}iv' -> '2.7.9$' or ''
+	4. If a format string is leaded by %{left|right}, the '%{left|right}'
+	   and the format string will be translated into a corresponding
+	   informations and 'left' and 'right' will be inserted at left and
+	   right side of the translation respectively if the translation is not
+	   an empty string.
+	   E.g: '%{#|$}iv' -> '#2.7.9$' or ''
+
+pyenv#info#preset({name})				*pyenv#info#preset()*
+
+	Return a formatted string of following presets, specified by {name}.
+
+	'long'
+	Show an activated version name and a version of the internal python
+	E.g.: #system (2.7.9)
+
+	'short'
+	Show an activated version name
+	E.g.: #system
+
+
+-------------------------------------------------------------------------------
+CONFIGURATION				*vim-pyenv-configuration*
+
+g:pyenv#auto_activate					*g:pyenv#auto_activate*
+
+	If it is 1, vim-pyenv automatically activates the current pyenv Python
+	when vim-pyenv is loaded.
+	Default to 1.
+
+g:pyenv#pyenv_exec					*g:pyenv#pyenv_exec*
+
+	The path of pyenv executable.
+
+g:pyenv#python_exec					*g:pyenv#python_exec*
+
+	The path of Python executable.
+
+g:pyenv#ctags_exec					*g:pyenv#ctags_exec*
+	
+	The path of ctags executable.
+
+g:pyenv#auto_create_ctags			 *g:pyenv#auto_create_ctags*
+
+	If it is 1, vim-pyenv automatically call |:PyenvCreateCtags| everytime
+	when user activate. It is very slow.
+	Default to 0.
+
+g:pyenv#auto_assign_ctags			 *g:pyenv#auto_assign_ctags*
+
+	If it is 1, vim-pyenv automatically assign/withdraw tags everytime
+	when user activate.
+	Default to 1.
+
+
+-------------------------------------------------------------------------------
+AUTOCMD					*vim-pyenv-autocmd*
+
+vim-pyenv-activate-post				*vim-pyenv-activate-post*
+
+	Called after activation
+
+vim-pyenv-deactivate-post			*vim-pyenv-deactivate-post*
+
+	Called after deactivation
+
+===============================================================================
+FAQ					*vim-pyenv-faq*
+
+Q. It say '"pyenv" is not found in $PATH' but I can use it in my terminal.
+
+A. Make sure that correct path is existing in $PATH of Vim. You may need to
+add a corresponding path manually like
+>
+	let sep = has('win32') || has('win64') ? ';' : ':'
+	let $PATH = join([
+		\ expand('~/.pyenv/bin'),
+		\ $PATH,
+		\], sep)
+<
+Or specify an absolute path to |g:pyenv#pyenv_exec|.
+
+
+Q. I would like to switch between python and python3 even in jedi-vim
+
+A. To do that, your vim required to be compiled with +python/+python3 so first
+make sure that your vim has both python interpreter.
+Then you can switch a major version of python of jedi with the following code
+>
+	function! s:jedi_auto_force_py_version() abort
+	  let major_version = pyenv#python#get_internal_major_version()
+	  call jedi#force_py_version(major_version)
+	endfunction
+	augroup vim-pyenv-custom-augroup
+	  autocmd! *
+	  autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
+	  autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
+	augroup END
+<
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
