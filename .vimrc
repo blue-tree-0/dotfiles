@@ -40,7 +40,6 @@ set wildmenu
 set history=5000
 set mouse=a
 set laststatus=2
-
 let mapleader = ","
 
 syntax on
