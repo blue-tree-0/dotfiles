@@ -12,7 +12,6 @@ if dein#load_state('/Users/blue/.cache/dein')
   call dein#load_toml('/Users/blue/.cache/dein/dein.toml', {'lazy': 0})
   "遅延ロード
   call dein#load_toml('/Users/blue/.cache/dein/dein_lazy.toml', {'lazy': 1})
-
   call dein#end()
   call dein#save_state()
 endif
@@ -43,7 +42,8 @@ set laststatus=2
 let mapleader = ","
 
 syntax on
-colorscheme iceberg
-highlight LineNr ctermfg=245
+"colorscheme iceberg
+set background=dark
+colorscheme solarized
 
 filetype on

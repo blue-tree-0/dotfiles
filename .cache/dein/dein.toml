@@ -25,15 +25,6 @@ if jedi#init_python()
 endif
 '''
 
-#c/c++補完
-[[plugins]]
-repo = 'justmao945/vim-clang'
-filetypes = ['c', 'cpp']
-hook_add = '''
-let g:clang_c_options = '-std=gnu11'
-let g:clang_cpp_options = '-std=c++11 -stdlib=libc++'
-'''
-
 #lightline色プラグイン
 [[plugins]]
 repo = 'itchyny/lightline.vim'
@@ -42,11 +33,14 @@ if !has('gui_running')
   set t_Co=256
 endif
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
+    \ 'colorscheme': 'solarized',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'readonly', 'filename', 'modified' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
     \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
+    \ },
+	\ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
     \ },
     \ }
 '''
@@ -70,28 +64,34 @@ let g:lightline.component_type = {
       \ }
 '''
 
-#git
-[[plugins]]
-repo='tpope/vim-fugitive'
-
 #syntaxチェッカー
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add='''
+let g:ale_linters = {
+    \ 'python': ['flake8', 'pyflakes'],
+    \ }
 let g:ale_sign_column_always = 1
 let g:ale_lint_on_text_changed = 1
 let g:airline#extensions#ale#enabled = 1
 '''
 
 
+#設定途中 テンプレート用意
+[[plugins]]
+repo='mattn/sonictemplate-vim'
+hook_add='''
+let g:sonictemplate_vim_template_dir = '~/git/vim_template'
+'''
+
 #vim window size 変更
 [[plugins]]
 repo='simeji/winresizer'
 
-#設定途中 テンプレート用意
-[[plugins]]
-repo='mattn/sonictemplate-vim'
-
 #コメントアウトプラグイン	
 [[plugins]]
 repo='scrooloose/nerdcommenter'
+
+#git
+[[plugins]]
+repo='tpope/vim-fugitive'

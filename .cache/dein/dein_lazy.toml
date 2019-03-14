@@ -9,7 +9,6 @@ nnoremap <silent><C-t> :NERDTreeToggle<CR>
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
-
 #自動pep8
 [[plugins]]
 repo = 'tell-k/vim-autopep8'
@@ -34,16 +33,10 @@ endfunction
 autocmd FileType python map <buffer>  <S-f> :call Autopep8()<CR>
 '''
 
-#自動c/c++フォーマット
-[[plugins]]
-repo = 'rhysd/vim-clang-format'
-hook_add = '''
-autocmd FileType c,cpp map <buffer>  <S-f> :ClangFormat<CR>
-'''
-
 #vim上でプログラム実行
 [[plugins]]
 repo='thinca/vim-quickrun'
 hook_add='''
 autocmd FileType c,cpp,python map <buffer>  <F7> :QuickRun<CR>
 '''
+
