@@ -5,7 +5,7 @@ hook_add='''
 nnoremap <silent><C-t> :NERDTreeToggle<CR>
 '''
 
-#便利なやつ
+#UI
 [[plugins]]
 repo = 'Shougo/unite.vim'
 
@@ -39,4 +39,5 @@ repo='thinca/vim-quickrun'
 hook_add='''
 autocmd FileType c,cpp,python map <buffer>  <F7> :QuickRun<CR>
 '''
+
 

@@ -77,7 +77,7 @@ let g:airline#extensions#ale#enabled = 1
 '''
 
 
-#設定途中 テンプレート用意
+#テンプレート
 [[plugins]]
 repo='mattn/sonictemplate-vim'
 hook_add='''
@@ -95,3 +95,4 @@ repo='scrooloose/nerdcommenter'
 #git
 [[plugins]]
 repo='tpope/vim-fugitive'
+
