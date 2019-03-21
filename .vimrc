@@ -24,23 +24,62 @@ if dein#check_install()
 endif
 
 
-set display=lastline
-set pumheight=10
+" display
+set number
+set cursorline
+set laststatus=2
 set showmatch
 set matchtime=1
-set number
-set hlsearch
-nmap <Esc><Esc> :nohl<CR>
-set tabstop=4
-set cindent
-set shiftwidth=4
+set helpheight=999
+set display=lastline
 set title
+set pumheight=10
+
+" cursor
+set backspace=indent,eol,start
+set whichwrap=b,s,h,l,<,>,[,]
+
+" deep
+set visualbell t_vb=
+set noerrorbells
+
+" file
+set noswapfile
+set nobackup
+set hidden
+set autoread
+set confirm
+
+" search/replace
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set wrapscan
+set gdefault
+
+" cmd
 set wildmenu
 set history=5000
+
+"operating env 
 set mouse=a
-set laststatus=2
+
+" tab/space
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set autoindent 
+set smartindent
+set cindent
+
+" key map
+nmap <Esc><Esc> :nohl<CR>
 let mapleader = ","
 
+
+" color
 syntax on
 "colorscheme iceberg
 set background=dark
