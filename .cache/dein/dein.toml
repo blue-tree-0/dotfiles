@@ -81,7 +81,7 @@ let g:airline#extensions#ale#enabled = 1
 [[plugins]]
 repo='mattn/sonictemplate-vim'
 hook_add='''
-let g:sonictemplate_vim_template_dir = '~/git/vim_template'
+let g:sonictemplate_vim_template_dir = '~/sonictemplate'
 '''
 
 #vim window size 変更

@@ -2,16 +2,16 @@ if &compatible
   set nocompatible               
 endif
 
-set runtimepath+=/Users/blue/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-if dein#load_state('/Users/blue/.cache/dein')
-  call dein#begin('/Users/blue/.cache/dein')
+if dein#load_state('~/.cache/dein')
+  call dein#begin('~/.cache/dein')
 
-  call dein#add('/Users/blue/.cache/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
   "ロード
-  call dein#load_toml('/Users/blue/.cache/dein/dein.toml', {'lazy': 0})
+  call dein#load_toml('~/.cache/dein/dein.toml', {'lazy': 0})
   "遅延ロード
-  call dein#load_toml('/Users/blue/.cache/dein/dein_lazy.toml', {'lazy': 1})
+  call dein#load_toml('~/.cache/dein/dein_lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
