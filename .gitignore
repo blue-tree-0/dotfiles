@@ -1,0 +1,4 @@
+.DS_Store
+nvim/.netrwhist
+nvim/dein/
+nvim/colors/
