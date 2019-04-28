@@ -1,4 +1,4 @@
 .DS_Store
-nvim/.netrwhist
-nvim/dein/
-nvim/colors/
+nvim/*
+!nvim/dein/*.toml
+!nvim/init.vim
