@@ -99,10 +99,3 @@ repo='tpope/vim-surround'
 # 括弧補完
 [[plugins]]
 repo='cohama/lexima.vim'
-
-# vim shell
-[[plugins]]
-repo='Shougo/vimproc.vim'
-hook_add='''
-let g:vimshell_prompt='VIM$ '
-'''
