@@ -1,4 +1,4 @@
 # Dotfiles
-- vim
+- neovim
 - zsh
 - bash
