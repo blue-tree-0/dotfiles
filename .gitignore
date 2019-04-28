@@ -1,4 +1,4 @@
 .DS_Store
-nvim/
-!nvim/dein/*.toml
-!nvim/init.vim
+/nvim/*
+!/nvim/dein/*.toml
+!/nvim/init.vim
