@@ -40,3 +40,7 @@ hook_add='''
 autocmd FileType c,cpp,python map <buffer>  <F7> :QuickRun<CR>
 '''
 
+# 括弧補完
+[[plugins]]
+on_i = 1
+repo='cohama/lexima.vim'

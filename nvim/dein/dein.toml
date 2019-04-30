@@ -1,9 +1,24 @@
+#autocomplete
+[[plugins]]
+repo='Shougo/deoplete.nvim'
+hook_add='''
+let g:deoplete#enable_at_startup = 1
+'''
+
+#deoplete python
+[[plugins]]
+repo ='deoplete-plugins/deoplete-jedi'
+on_ft = 'python'
+hook_add='''
+let g:deoplete#sources#jedi#server_timeout=100
+let g:deoplete#sources#jedi#statement_length=100
+let g:jedi#completions_enabled = 0
+'''
+
 #python補完
 [[plugins]]
 repo ='davidhalter/jedi-vim'
-on_ft = 'python'
 hook_add='''
-let g:jedi#completions_command = "<C-n>"
 let g:jedi#popup_select_first = 0 
 let g:jedi#popup_on_dot = 0
 autocmd FileType python setlocal completeopt-=preview
@@ -76,7 +91,3 @@ repo='scrooloose/nerdcommenter'
 # 括弧やクオート
 [[plugins]]
 repo='tpope/vim-surround'
-
-# 括弧補完
-[[plugins]]
-repo='cohama/lexima.vim'
