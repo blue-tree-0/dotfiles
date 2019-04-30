@@ -25,48 +25,9 @@ if jedi#init_python()
 endif
 '''
 
-#lightline色プラグイン
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-hook_add = '''
-if !has('gui_running')
-  set t_Co=256
-endif
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ],
-    \             [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] ],
-    \ },
-	\ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
-    \ },
-    \ }
-'''
-
-#シンタックスエラー数などをlightlineに表示プラグイン
-[[plugins]]
-repo = 'maximbaz/lightline-ale'
-depends = ['lightline.vim', 'ale']
-hook_add='''
-let g:lightline.component_expand = {
-      \  'linter_checking': 'lightline#ale#checking',
-      \  'linter_warnings': 'lightline#ale#warnings',
-      \  'linter_errors': 'lightline#ale#errors',
-      \  'linter_ok': 'lightline#ale#ok',
-      \ }
-let g:lightline.component_type = {
-      \     'linter_checking': 'left',
-      \     'linter_warnings': 'warning',
-      \     'linter_errors': 'error',
-      \     'linter_ok': 'left',
-      \ }
-'''
-
 #syntaxチェッカー
 [[plugins]]
-repo = 'w0rp/ale'
+repo='w0rp/ale'
 hook_add='''
 let g:ale_linters = {
     \ 'python': ['flake8', 'pyflakes'],
