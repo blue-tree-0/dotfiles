@@ -38,4 +38,4 @@ fi
 eval "$(pyenv virtualenv-init -)"
 
 export PYTHONDONTWRITEBYTECODE=1
-alias brew="env PATH=${PATH/Users/blue/.pyenv/shims:/} brew"
+alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"

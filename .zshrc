@@ -99,3 +99,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 eval "$(pyenv virtualenv-init -)"
 export PYTHONDONTWRITEBYTECODE=1
+
+# brew
+alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
