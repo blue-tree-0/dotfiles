@@ -44,3 +44,10 @@ autocmd FileType c,cpp,python map <buffer>  <F7> :QuickRun<CR>
 [[plugins]]
 on_i = 1
 repo='cohama/lexima.vim'
+
+# tagbar
+[[plugins]]
+repo='majutsushi/tagbar'
+hook_add='''
+nmap <F8> :TagbarToggle<CR>
+'''
