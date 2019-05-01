@@ -82,6 +82,13 @@ let g:airline#extensions#ale#enabled = 1
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
+#git
+[[plugins]]
+repo='airblade/vim-gitgutter'
+hook_add='''
+let g:gitgutter_highlight_lines = 1
+'''
+
 #powerline
 [[plugins]]
 repo='vim-airline/vim-airline'
