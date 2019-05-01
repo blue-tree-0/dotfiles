@@ -95,6 +95,9 @@ augroup END
 " fast scroll 
 set ttyfast
 
+" reflect time
+set updatetime=250
+
 " color
 syntax on
 set background=dark
