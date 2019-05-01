@@ -85,9 +85,6 @@ repo = 'tpope/vim-fugitive'
 #git
 [[plugins]]
 repo='airblade/vim-gitgutter'
-hook_add='''
-let g:gitgutter_highlight_lines = 1
-'''
 
 #powerline
 [[plugins]]
