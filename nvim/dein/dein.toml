@@ -60,6 +60,12 @@ let g:deoplete#sources#clang#clang_header='/Library/Developer/CommandLineTools/u
 autocmd FileType c,cpp setlocal completeopt-=preview
 '''
 
+#c/c++ header補完
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_ft = ['c', 'cpp']
+depends = ['deoplete.nvim']
+
 #syntaxチェッカー
 [[plugins]]
 repo='w0rp/ale'
