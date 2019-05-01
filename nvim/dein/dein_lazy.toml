@@ -33,6 +33,19 @@ endfunction
 autocmd FileType python map <buffer>  <S-f> :call Autopep8()<CR>
 '''
 
+#c/c++ format
+[[plugins]]
+repo='rhysd/vim-clang-format'
+on_ft = ['c', 'cpp']
+hook_add='''
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "C++11"}
+autocmd FileType c,cpp map <buffer><S-f> :ClangFormat<CR>
+'''
+
 # vim上でプログラム実行
 [[plugins]]
 repo='thinca/vim-quickrun'
