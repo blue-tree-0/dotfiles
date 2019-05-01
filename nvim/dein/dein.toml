@@ -3,6 +3,15 @@
 repo='Shougo/deoplete.nvim'
 hook_add='''
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
+ 
 '''
 
 #deoplete python
@@ -38,6 +47,17 @@ if jedi#init_python()
     autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
   augroup END
 endif
+'''
+
+#c/c++補完
+[[plugins]]
+repo='zchee/deoplete-clang'
+on_ft = ['c', 'cpp']
+depends = ['deoplete.nvim']
+hook_add='''
+let g:deoplete#sources#clang#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header='/Library/Developer/CommandLineTools/usr/lib/clang'
+autocmd FileType c,cpp setlocal completeopt-=preview
 '''
 
 #syntaxチェッカー
