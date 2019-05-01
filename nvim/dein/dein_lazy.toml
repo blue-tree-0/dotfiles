@@ -38,11 +38,19 @@ autocmd FileType python map <buffer>  <S-f> :call Autopep8()<CR>
 repo='rhysd/vim-clang-format'
 on_ft = ['c', 'cpp']
 hook_add='''
+let g:clang_format#code_style='google'
 let g:clang_format#style_options = {
-            \ "AccessModifierOffset" : -4,
-            \ "AllowShortIfStatementsOnASingleLine" : "true",
-            \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "C++11"}
+	\   "AlignConsecutiveAssignments": "true",
+	\   "Cpp11BracedListStyle": "true",
+	\   "DerivePointerAlignment": "false",
+	\   "IndentCaseLabels": "true",
+	\   "IndentWidth":     4,
+	\   "KeepEmptyLinesAtTheStartOfBlocks": "true",
+	\   "PointerAlignment": "Right",
+	\   "SpacesBeforeTrailingComments": 1,
+	\   "Standard":        "Cpp11",
+	\   "TabWidth":        4,
+	\   "UseTab":          "ForIndentation" }
 autocmd FileType c,cpp map <buffer><S-f> :ClangFormat<CR>
 '''
 
