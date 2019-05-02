@@ -83,8 +83,9 @@ alias ..='cd ..'
 alias c='cd'
 
 #nvim
-alias vi='nvim -u NONE -N'
-alias v='nvim'
+alias vim='nvim'
+alias vi='vim -u NONE -N'
+alias v='vim'
 export XDG_CONFIG_HOME=$HOME/dotfiles
 
 #jupyter
