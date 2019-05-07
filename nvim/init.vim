@@ -2,16 +2,18 @@ if &compatible
   set nocompatible               
 endif
 
-set runtimepath+=~/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
+let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python'
+let s:dein_dir = expand('$HOME/dotfiles/nvim/dein')
 
-if dein#load_state('~/dotfiles/nvim/dein')
-  call dein#begin('~/dotfiles/nvim/dein')
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
 
-  call dein#add('~/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim')
+  let s:toml_dir = expand('$HOME/dotfiles/nvim/dein/')
   "ロード
-  call dein#load_toml('~/dotfiles/nvim/dein/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:toml_dir . 'dein.toml', {'lazy': 0})
   "遅延ロード
-  call dein#load_toml('~/dotfiles/nvim/dein/dein_lazy.toml', {'lazy': 1})
+  call dein#load_toml(s:toml_dir . 'dein_lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
