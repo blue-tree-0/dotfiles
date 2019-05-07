@@ -76,7 +76,7 @@ alias l='ls'
 alias la='ls -al'
 
 # rm
-alias rm='rm -i'
+alias rm='rmtrash'
 
 # cd
 alias ..='cd ..'
