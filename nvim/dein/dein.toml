@@ -1,81 +1,23 @@
-#autocomplete
-[[plugins]]
-repo='Shougo/deoplete.nvim'
-hook_add='''
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
- 
-'''
-
-#deoplete python
-[[plugins]]
-repo ='deoplete-plugins/deoplete-jedi'
-on_ft = 'python'
-hook_add='''
-let g:deoplete#sources#jedi#server_timeout=100
-let g:deoplete#sources#jedi#statement_length=100
-let g:jedi#completions_enabled = 0
-'''
-
-#python補完
-[[plugins]]
-repo ='davidhalter/jedi-vim'
-hook_add='''
-let g:jedi#popup_select_first = 0 
-let g:jedi#popup_on_dot = 0
-autocmd FileType python setlocal completeopt-=preview
-'''
-
-#pyenv用プラグイン
-[[plugins]]
-repo = 'lambdalisue/vim-pyenv'
-hook_add='''
-if jedi#init_python()
-  function! s:jedi_auto_force_py_version() abort
-    let g:jedi#force_py_version = pyenv#python#get_internal_major_version()
-  endfunction
-  augroup vim-pyenv-custom-augroup
-    autocmd! *
-    autocmd User vim-pyenv-activate-post   call s:jedi_auto_force_py_version()
-    autocmd User vim-pyenv-deactivate-post call s:jedi_auto_force_py_version()
-  augroup END
-endif
-'''
-
-#c/c++補完
-[[plugins]]
-repo='zchee/deoplete-clang'
-on_ft = ['c', 'cpp']
-depends = ['deoplete.nvim']
-hook_add='''
-let g:deoplete#sources#clang#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header='/Library/Developer/CommandLineTools/usr/lib/clang'
-autocmd FileType c,cpp setlocal completeopt-=preview
-'''
-
-#c/c++ header補完
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_ft = ['c', 'cpp']
-depends = ['deoplete.nvim']
-
 #syntaxチェッカー
 [[plugins]]
 repo='w0rp/ale'
 hook_add='''
 let g:ale_linters = {
-    \ 'python': ['flake8', 'pyflakes'],
-    \ }
+		\ 'python': ['flake8', 'pyflakes', 'autopep8'],
+		\ 'c' : ['gcc'],
+		\ 'cpp' : ['gcc'],
+		\ }
+let g:ale_fixers = {
+	    \'python':['autopep8'],
+	    \'c':['clang-format'],
+	    \'cpp':['clang-format'],
+	    \}
 let g:ale_sign_column_always = 1
+let g:ale_use_global_executables = 1
 let g:ale_lint_on_text_changed = 1
-let g:airline#extensions#ale#enabled = 1
+nmap <S-f> <Plug>(ale_fix)"
+let g:ale_python_flake8_args = '--max-line-length=150'
+let g:ale_python_autopep8_args = '--max-line-length=150'
 '''
 
 #git
@@ -90,12 +32,14 @@ repo='airblade/vim-gitgutter'
 [[plugins]]
 repo='vim-airline/vim-airline'
 hook_add='''
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 '''
+
 #powerline theme
 [[plugins]]
 repo='vim-airline/vim-airline-themes'

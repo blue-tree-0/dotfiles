@@ -1,3 +1,62 @@
+#autocomplete
+[[plugins]]
+repo='Shougo/deoplete.nvim'
+on_i = 1
+hook_add='''
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 0
+let g:deoplete#enable_ignore_case = 0
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
+'''
+
+#deoplete python
+[[plugins]]
+repo ='deoplete-plugins/deoplete-jedi'
+on_ft = 'python'
+on_i = 1
+hook_add='''
+let g:deoplete#sources#jedi#server_timeout=100
+let g:deoplete#sources#jedi#statement_length=100
+let g:jedi#completions_enabled = 0
+'''
+
+#python補完
+[[plugins]]
+repo ='davidhalter/jedi-vim'
+on_ft = 'python'
+on_i = 1
+hook_add='''
+let g:jedi#force_py_version = 3
+let g:jedi#auto_initialization = 1
+let g:jedi#popup_select_first = 0 
+let g:jedi#popup_on_dot = 0
+autocmd FileType python setlocal completeopt-=preview
+'''
+
+#c/c++補完
+[[plugins]]
+repo='zchee/deoplete-clang'
+on_ft = ['c', 'cpp']
+on_i = 1
+depends = ['deoplete.nvim']
+hook_add='''
+let g:deoplete#sources#clang#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header='/Library/Developer/CommandLineTools/usr/lib/clang'
+autocmd FileType c,cpp setlocal completeopt-=preview
+'''
+
+#c/c++ header補完
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_ft = ['c', 'cpp']
+on_i = 1
+depends = ['deoplete.nvim']
+
 # ディレクトリ表示プラグイン
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -8,51 +67,6 @@ nnoremap <silent><C-t> :NERDTreeToggle<CR>
 # UI
 [[plugins]]
 repo = 'Shougo/unite.vim'
-
-# 自動pep8
-[[plugins]]
-repo = 'tell-k/vim-autopep8'
-hook_add='''
-function! Preserve(command)
-  let search = @/
-  let cursor_position = getpos('.')
-  normal! H
-  let window_position = getpos('.')
-  call setpos('.', cursor_position)
-  execute a:command
-  let @/ = search
-  call setpos('.', window_position)
-  normal! zt
-  call setpos('.', cursor_position)
-endfunction
-
-function! Autopep8()
-  call Preserve(':silent %!autopep8 -')
-endfunction
-
-autocmd FileType python map <buffer>  <S-f> :call Autopep8()<CR>
-'''
-
-#c/c++ format
-[[plugins]]
-repo='rhysd/vim-clang-format'
-on_ft = ['c', 'cpp']
-hook_add='''
-let g:clang_format#code_style='google'
-let g:clang_format#style_options = {
-	\   "AlignConsecutiveAssignments": "true",
-	\   "Cpp11BracedListStyle": "true",
-	\   "DerivePointerAlignment": "false",
-	\   "IndentCaseLabels": "true",
-	\   "IndentWidth":     4,
-	\   "KeepEmptyLinesAtTheStartOfBlocks": "true",
-	\   "PointerAlignment": "Right",
-	\   "SpacesBeforeTrailingComments": 1,
-	\   "Standard":        "Cpp11",
-	\   "TabWidth":        4,
-	\   "UseTab":          "ForIndentation" }
-autocmd FileType c,cpp map <buffer><S-f> :ClangFormat<CR>
-'''
 
 # vim上でプログラム実行
 [[plugins]]
