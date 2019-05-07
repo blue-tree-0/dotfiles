@@ -1,4 +1,5 @@
 .DS_Store
+nvim/.netrwhist
 nvim/colors/
 nvim/dein/*
 !nvim/dein/*.toml
