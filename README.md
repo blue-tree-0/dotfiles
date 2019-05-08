@@ -2,3 +2,4 @@
 - neovim
 - zsh
 - bash
+- tmux
