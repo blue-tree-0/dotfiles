@@ -101,8 +101,17 @@ set ttyfast
 set updatetime=250
 
 " color
+if (empty($TMUX))
+  if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme one
 
 filetype on
