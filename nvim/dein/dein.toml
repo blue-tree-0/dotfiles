@@ -44,7 +44,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 [[plugins]]
 repo='vim-airline/vim-airline-themes'
 hook_add='''
-let g:airline_theme = 'badwolf'
+let g:airline_theme='one'
 '''
 
 #テンプレート
