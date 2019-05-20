@@ -76,9 +76,12 @@ set autoindent
 set smartindent
 set cindent
 
+" yank
+set clipboard+=unnamed
 " key map
 nmap <Esc><Esc> :nohl<CR>
 let mapleader = ","
+tnoremap <Esc> <C-\><C-n>
 
 " encode
 set encoding=utf-8
@@ -101,13 +104,8 @@ set ttyfast
 set updatetime=250
 
 " color
-if (empty($TMUX))
-  if (has("nvim"))
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  if (has("termguicolors"))
-    set termguicolors
-  endif
+if (has("nvim"))
+  set termguicolors
 endif
 
 syntax on

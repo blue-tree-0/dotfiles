@@ -103,3 +103,13 @@ export PYTHONDONTWRITEBYTECODE=1
 
 # brew
 alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
+
+# clang-format
+alias clang="clang-format -i -style=file"
+
+# emacs
+export PATH=/usr/local/bin:$PATH
+alias emacs='emacs -nw'
+
+# pip
+alias pip='pip3'
