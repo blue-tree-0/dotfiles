@@ -13,50 +13,8 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 inoremap <expr><CR>  pumvisible() ? deoplcache#close_popup() : "<CR>"
+autocmd FileType python,c,cpp setlocal completeopt-=preview
 '''
-
-#deoplete python
-[[plugins]]
-repo ='deoplete-plugins/deoplete-jedi'
-on_ft = 'python'
-on_i = 1
-hook_add='''
-let g:deoplete#sources#jedi#server_timeout=100
-let g:deoplete#sources#jedi#statement_length=100
-let g:jedi#completions_enabled = 0
-'''
-
-#python補完
-[[plugins]]
-repo ='davidhalter/jedi-vim'
-on_ft = 'python'
-on_i = 1
-hook_add='''
-let g:jedi#force_py_version = 3
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_select_first = 0 
-let g:jedi#popup_on_dot = 0
-autocmd FileType python setlocal completeopt-=preview
-'''
-
-#c/c++補完
-[[plugins]]
-repo='zchee/deoplete-clang'
-on_ft = ['c', 'cpp']
-on_i = 1
-depends = ['deoplete.nvim']
-hook_add='''
-let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-autocmd FileType c,cpp setlocal completeopt-=preview
-'''
-
-#c/c++ header補完
-[[plugins]]
-repo = 'Shougo/neoinclude.vim'
-on_ft = ['c', 'cpp']
-on_i = 1
-depends = ['deoplete.nvim']
 
 # ディレクトリ表示プラグイン
 [[plugins]]
@@ -68,13 +26,6 @@ nnoremap <silent><C-t> :NERDTreeToggle<CR>
 # UI
 [[plugins]]
 repo = 'Shougo/unite.vim'
-
-# vim上でプログラム実行
-[[plugins]]
-repo='thinca/vim-quickrun'
-hook_add='''
-autocmd FileType c,cpp,python map <buffer>  <F7> :QuickRun<CR>
-'''
 
 # 括弧補完
 [[plugins]]

@@ -1,5 +1,5 @@
 if &compatible
-  set nocompatible               
+  set nocompatible
 endif
 
 set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
@@ -64,7 +64,7 @@ set gdefault
 set wildmenu
 set history=5000
 
-"operating env 
+"operating env
 set mouse=a
 
 " tab/space
@@ -72,7 +72,7 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set autoindent 
+set autoindent
 set smartindent
 set cindent
 
@@ -97,7 +97,7 @@ augroup auto_comment_off
     autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-" fast scroll 
+" fast scroll
 set ttyfast
 
 " reflect time

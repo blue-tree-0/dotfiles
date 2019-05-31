@@ -67,13 +67,13 @@ if ! zplug check --verbose; then
 fi
 
 # Then, source plugins and add commands to $PATH
-zplug load 
+zplug load
 
 
 #ls
 alias ls='ls -G'
-alias l='ls'
-alias la='ls -al'
+alias l='ls -lh'
+alias la='ls -alh'
 
 # rm
 alias rm='rmtrash'
@@ -96,7 +96,7 @@ alias j='jupyter notebook'
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+	eval "$(pyenv init -)"
 fi
 eval "$(pyenv virtualenv-init -)"
 export PYTHONDONTWRITEBYTECODE=1
@@ -105,7 +105,7 @@ export PYTHONDONTWRITEBYTECODE=1
 alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
 
 # clang-format
-alias clang="clang-format -i -style=file"
+alias clang-format="clang-format -i -style=file"
 
 # emacs
 export PATH=/usr/local/bin:$PATH
@@ -113,3 +113,8 @@ alias emacs='emacs -nw'
 
 # pip
 alias pip='pip3'
+
+# llvm
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/llvm/lib"
+export CPPFLAGS="-I/usr/local/opt/llvm/include"

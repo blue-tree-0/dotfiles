@@ -3,21 +3,38 @@
 repo='w0rp/ale'
 hook_add='''
 let g:ale_linters = {
-		\ 'python': ['flake8','black'],
-		\ 'c' : ['gcc'],
-		\ 'cpp' : ['gcc'],
-		\ }
+	\ 'python': ['flake8','black'],
+	\ 'c' : ['gcc'],
+	\ 'cpp' : ['gcc'],
+	\ }
 let g:ale_fixers = {
-	    \'python':['black'],
-	    \'c':['clang-format'],
-	    \'cpp':['clang-format'],
-	    \}
+	\'python':['black'],
+	\'c':['clang-format'],
+	\'cpp':['clang-format'],
+	\ }
 let g:ale_sign_column_always = 1
 let g:ale_use_global_executables = 1
 let g:ale_lint_on_text_changed = 1
 nmap <silent> <S-f> <Plug>(ale_fix)
 let g:ale_python_flake8_args = '--max-line-length=150'
 let g:ale_python_autopep8_args = '--max-line-length=150'
+'''
+
+# LSP
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+let g:LanguageClient_serverCommands = {
+	\ 'python' : ['pyls'],
+	\ 'c' : ['clangd'],
+	\ 'cpp': ['clangd'],
+	\ }
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_diagnosticsEnable = 0
+
+nnoremap K :call LanguageClient#textDocument_hover()<CR>
 '''
 
 #git
@@ -58,7 +75,7 @@ let g:sonictemplate_vim_template_dir = '~/sonictemplate'
 [[plugins]]
 repo='simeji/winresizer'
 
-#コメントアウトプラグイン	
+#コメントアウトプラグイン
 [[plugins]]
 repo='scrooloose/nerdcommenter'
 
