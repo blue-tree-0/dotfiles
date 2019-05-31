@@ -1,52 +1,5 @@
-# powerline shell
-TERM=xterm-256color
-POWERLEVEL9K_MODE='awesome-fontconfig'
-VIRTUAL_ENV_DISABLE_PROMPT=1
-POWERLEVEL9K_PYTHON_ICON='\U1F40D '
-
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"
-POWERLEVEL9K_RVM_BACKGROUND="black"
-POWERLEVEL9K_RVM_FOREGROUND="249"
-POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
-POWERLEVEL9K_TIME_BACKGROUND="black"
-POWERLEVEL9K_TIME_FOREGROUND="249"
-POWERLEVEL9K_TIME_FORMAT="\UF43A %D{%H:%M  \UF133  %d.%m.%y}"
-POWERLEVEL9K_RVM_BACKGROUND="black"
-POWERLEVEL9K_RVM_FOREGROUND="249"
-POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
-POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='black'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='yellow'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='blue'
-POWERLEVEL9K_FOLDER_ICON=''
-POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
-POWERLEVEL9K_STATUS_VERBOSE=false
-POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
-POWERLEVEL9K_VCS_UNTRACKED_ICON='\u25CF'
-POWERLEVEL9K_VCS_UNSTAGED_ICON='\u00b1'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON='\u2193'
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
-POWERLEVEL9K_VCS_COMMIT_ICON="\uf417"
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%F{white}"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%F{white} "
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context  os_icon virtualenv ssh root_indicator dir_writable dir vcs )
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status rvm time ram)
-
-ENABLE_CORRECTION="false"
-HIST_STAMPS="mm/dd/yyyy"
-autoload -U compinit && compinit
-
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+# load powerline theme
+source ~/dotfiles/.zsh/powerline_theme.zsh
 
 # zplug
 source ~/.zplug/init.zsh
@@ -69,28 +22,11 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
+# load alias
+source ~/dotfiles/.zsh/alias.zsh
 
-#ls
-alias ls='ls -G'
-alias l='ls -lh'
-alias la='ls -alh'
-
-# rm
-alias rm='rmtrash'
-
-# cd
-alias ..='cd ..'
-alias c='cd'
-
-#nvim
-alias vim='nvim'
-alias vi='vim -u NONE -N'
-alias v='vim'
+# dotfiles
 export XDG_CONFIG_HOME=$HOME/dotfiles
-
-#jupyter
-alias j='jupyter notebook'
-
 
 #pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -101,18 +37,9 @@ fi
 eval "$(pyenv virtualenv-init -)"
 export PYTHONDONTWRITEBYTECODE=1
 
-# brew
-alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
-
-# clang-format
-alias clang-format="clang-format -i -style=file"
 
 # emacs
 export PATH=/usr/local/bin:$PATH
-alias emacs='emacs -nw'
-
-# pip
-alias pip='pip3'
 
 # llvm
 export PATH="/usr/local/opt/llvm/bin:$PATH"
