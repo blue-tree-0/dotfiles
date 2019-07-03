@@ -22,5 +22,5 @@ export PYTHONDONTWRITEBYTECODE=1
 # emacs
 export PATH=/usr/local/bin:$PATH
 
-# llvm
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+# rbenv
+eval "$(rbenv init -)"
