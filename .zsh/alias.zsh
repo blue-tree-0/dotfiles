@@ -27,5 +27,5 @@ alias clang-format="clang-format -i -style=file"
 # emacs
 alias emacs='emacs -nw'
 
-# pip
-alias pip='pip3'
+# g++
+alias g++='g++ -std=c++11 -O2 -Wall -Wnon-virtual-dtor -Woverloaded-virtual'
