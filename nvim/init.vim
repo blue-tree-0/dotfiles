@@ -4,6 +4,7 @@ endif
 
 set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python'
+let $PATH='/usr/local/opt/llvm/bin:'.$PATH
 let s:dein_dir = expand('$HOME/dotfiles/nvim/dein')
 
 if dein#load_state(s:dein_dir)
@@ -113,3 +114,9 @@ set background=dark
 colorscheme one
 
 filetype on
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
