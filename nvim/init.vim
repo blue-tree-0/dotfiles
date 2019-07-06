@@ -4,6 +4,7 @@ endif
 
 set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python'
+let g:ruby_host_prog = expand('$HOME') . '/.rbenv/versions/2.6.3/bin/neovim-ruby-host'
 let $PATH='/usr/local/opt/llvm/bin:'.$PATH
 let s:dein_dir = expand('$HOME/dotfiles/nvim/dein')
 

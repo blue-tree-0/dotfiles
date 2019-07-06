@@ -22,11 +22,13 @@ repo='w0rp/ale'
 hook_add='''
 let g:ale_linters = {
 	\ 'python': ['flake8','black'],
+	\ 'ruby': ['rubocop'],
 	\ 'c' : ['gcc'],
 	\ 'cpp' : ['g++'],
 	\ }
 let g:ale_fixers = {
 	\'python':['black'],
+	\'ruby': ['rubocop'],
 	\'c':['clang-format'],
 	\'cpp':['clang-format'],
 	\ }
@@ -46,6 +48,7 @@ build = 'bash install.sh'
 hook_add = '''
 let g:LanguageClient_serverCommands = {
 	\ 'python' : ['pyls'],
+	\ 'ruby' : ['solargraph', 'stdio'],
 	\ 'c' : ['clangd'],
 	\ 'cpp': ['clangd'],
 	\ }
