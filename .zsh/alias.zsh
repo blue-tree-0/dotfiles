@@ -1,31 +1,49 @@
+# depend os
+case ${OSTYPE} in
+	darwin*)
+		alias ls="ls -G"
+	;;
+	linux*)
+		alias ls="ls --color=auto"
+	;;
+esac
+
 #ls
-alias ls='ls -G'
-alias l='ls -lh'
-alias la='ls -alh'
+alias l="ls -lh"
+alias la="ls -alh"
 
 # rm
-alias rm='rmtrash'
+if type "rmtrash" > /dev/null 2>&1; then
+	alias rm="rmtrash"
+else
+	alias rm="rm -i"
+fi
 
 # cd
-alias ..='cd ..'
-alias c='cd'
+alias ..="cd .."
+alias c="cd"
 
 #nvim
-alias vim='nvim'
-alias vi='vim -u NONE -N'
-alias v='vim'
+if type "nvim"> /dev/null 2>&1; then
+	alias vim="nvim"
+fi
+alias vi="vim -u NONE -N"
+alias v="vim"
 
 #jupyter
-alias j='jupyter notebook'
+alias j="jupyter notebook"
 
 # brew
-alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
+if type "brew" > /dev/null 2>&1; then
+	alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
+fi
 
 # clang-format
-alias clang-format="clang-format -i -style=file"
-
-# emacs
-alias emacs='emacs -nw'
+if type "clang-format"> /dev/null 2>&1; then
+	alias clang-format="clang-format -i -style=file"
+fi
 
 # g++
-alias g++='g++ -std=c++11 -O2 -Wall -Wnon-virtual-dtor -Woverloaded-virtual'
+if type "g++"> /dev/null 2>&1; then
+	alias g++="g++ -std=c++11 -O2 -Wall -Wnon-virtual-dtor -Woverloaded-virtual"
+fi
