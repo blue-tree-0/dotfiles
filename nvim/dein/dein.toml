@@ -81,9 +81,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 #powerline theme
 [[plugins]]
 repo='vim-airline/vim-airline-themes'
-hook_add='''
-let g:airline_theme='one'
-'''
 
 #テンプレート
 [[plugins]]

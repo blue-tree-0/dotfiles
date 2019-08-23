@@ -6,16 +6,15 @@ set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python'
 let g:ruby_host_prog = expand('$HOME') . '/.rbenv/versions/2.6.3/bin/neovim-ruby-host'
 let $PATH='/usr/local/opt/llvm/bin:'.$PATH
-let s:dein_dir = expand('$HOME/dotfiles/nvim/dein')
+let s:dein_dir = expand('$HOME/dotfiles/nvim/dein/')
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  let s:toml_dir = expand('$HOME/dotfiles/nvim/dein/')
   "ロード
-  call dein#load_toml(s:toml_dir . 'dein.toml', {'lazy': 0})
+  call dein#load_toml(s:dein_dir . 'dein.toml', {'lazy': 0})
   "遅延ロード
-  call dein#load_toml(s:toml_dir . 'dein_lazy.toml', {'lazy': 1})
+  call dein#load_toml(s:dein_dir . 'dein_lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
@@ -27,6 +26,11 @@ if dein#check_install()
   call dein#install()
 endif
 
+if findfile(s:dein_dir . "repos/github.com/vim-airline/vim-airline-themes/autoload/airline/themes/one.vim") != ""
+  let g:airline_theme='one'
+else
+  let g:airline_theme='simple'
+endif
 
 " display
 set number
@@ -112,7 +116,9 @@ endif
 
 syntax on
 set background=dark
-colorscheme one
+if findfile("~/dotfiles/nvim/colors/one.vim") != ""
+  colorscheme one
+endif
 
 filetype on
 
