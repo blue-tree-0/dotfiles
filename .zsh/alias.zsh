@@ -13,11 +13,7 @@ alias l="ls -lh"
 alias la="ls -alh"
 
 # rm
-if type "rmtrash" > /dev/null 2>&1; then
-	alias rm="rmtrash"
-else
-	alias rm="rm -i"
-fi
+alias rm="rm -i"
 
 # cd
 alias ..="cd .."
@@ -30,9 +26,6 @@ fi
 alias vi="vim -u NONE -N"
 alias v="vim"
 
-#jupyter
-alias j="jupyter notebook"
-
 # brew
 if type "brew" > /dev/null 2>&1; then
 	alias brew="env PATH=${PATH/${HOME}\/\.pyenv\/shims:/} brew"
@@ -44,6 +37,11 @@ if type "clang-format"> /dev/null 2>&1; then
 fi
 
 # g++
-if type "g++"> /dev/null 2>&1; then
-	alias g++="g++ -std=c++11 -O2 -Wall -Wnon-virtual-dtor -Woverloaded-virtual"
+if type "g++-9"> /dev/null 2>&1; then
+	alias g++="g++-9 -std=gnu++14 -O2 -Wall -Werror"
+elif type "g++"> /dev/null 2>&1; then
+	alias g++="g++ -std=gnu++1y -O2 -Wall -Werror"
 fi
+
+# ssh tensorboard
+alias sshL="ssh -L 8888:localhost:6006"
