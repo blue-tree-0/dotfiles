@@ -11,8 +11,6 @@ let g:deoplete#enable_refresh_always = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
-inoremap <expr><CR>  pumvisible() ? deoplcache#close_popup() : "<CR>"
-inoremap <expr> <C-n>  deoplete#mappings#manual_complete()
 autocmd FileType python,c,cpp setlocal completeopt-=preview
 '''
 
@@ -81,26 +79,18 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 #powerline theme
 [[plugins]]
 repo='vim-airline/vim-airline-themes'
-
-#テンプレート
-[[plugins]]
-repo='mattn/sonictemplate-vim'
 hook_add='''
-let g:sonictemplate_vim_template_dir = '~/sonictemplate'
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='dark'
 '''
 
 #vim window size 変更
 [[plugins]]
 repo='simeji/winresizer'
 
-#コメントアウトプラグイン
-[[plugins]]
-repo='scrooloose/nerdcommenter'
-
-# 括弧やクオート
-[[plugins]]
-repo='tpope/vim-surround'
-
 # language pack
 [[plugins]]
 repo="sheerun/vim-polyglot"
+
+[[plugins]]
+repo="altercation/vim-colors-solarized"

@@ -26,12 +26,6 @@ if dein#check_install()
   call dein#install()
 endif
 
-if findfile(s:dein_dir . "repos/github.com/vim-airline/vim-airline-themes/autoload/airline/themes/one.vim") != ""
-  let g:airline_theme='one'
-else
-  let g:airline_theme='simple'
-endif
-
 " display
 set number
 set cursorline
@@ -42,10 +36,6 @@ set helpheight=999
 set display=lastline
 set title
 set pumheight=10
-
-" cursor
-set backspace=indent,eol,start
-set whichwrap=b,s,h,l,<,>,[,]
 
 " deep
 set visualbell t_vb=
@@ -109,16 +99,9 @@ set ttyfast
 " reflect time
 set updatetime=250
 
-" color
-if (has("nvim"))
-  set termguicolors
-endif
-
 syntax on
 set background=dark
-if findfile("~/dotfiles/nvim/colors/one.vim") != ""
-  colorscheme one
-endif
+colorscheme solarized
 
 filetype on
 
