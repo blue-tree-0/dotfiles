@@ -2,7 +2,7 @@
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add="""
-nnoremap <silent><C-t> :<C-u>Defx -show-ignored-files<CR>
+nnoremap <silent><C-t> :<C-u>Defx -show-ignored-files -toggle<CR>
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
 		nnoremap <silent><buffer><expr> <CR>
