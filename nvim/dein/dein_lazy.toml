@@ -1,4 +1,4 @@
-# ディレクトリ表示プラグイン
+# ファイル操作
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 hook_add="""
@@ -69,7 +69,7 @@ function! s:defx_my_settings() abort
 endfunction
 """
 
-# UI
+# 統合UI
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 

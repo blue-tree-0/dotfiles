@@ -92,5 +92,6 @@ repo='simeji/winresizer'
 [[plugins]]
 repo="sheerun/vim-polyglot"
 
+# color theme
 [[plugins]]
 repo="altercation/vim-colors-solarized"
