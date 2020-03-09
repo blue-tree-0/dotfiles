@@ -4,17 +4,13 @@ endif
 
 set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
 let g:python3_host_prog = expand('$HOME') . '/.pyenv/shims/python'
-let g:ruby_host_prog = expand('$HOME') . '/.rbenv/versions/2.6.3/bin/neovim-ruby-host'
 let $PATH='/usr/local/opt/llvm/bin:'.$PATH
 let s:dein_dir = expand('$HOME/dotfiles/nvim/dein/')
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
-  "ロード
   call dein#load_toml(s:dein_dir . 'dein.toml', {'lazy': 0})
-  "遅延ロード
-  call dein#load_toml(s:dein_dir . 'dein_lazy.toml', {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
@@ -26,87 +22,24 @@ if dein#check_install()
   call dein#install()
 endif
 
-" display
-set number
-set cursorline
-set laststatus=2
-set showmatch
-set matchtime=1
-set helpheight=999
-set display=lastline
-set title
-set pumheight=10
+" read setting file
+runtime! config/*.vim
+runtime! dein/config/*.vim
 
-" deep
-set visualbell t_vb=
-set noerrorbells
-
-" file
-set noswapfile
-set nobackup
-set hidden
-set autoread
-set confirm
-
-" search/replace
-set incsearch
-set hlsearch
-set ignorecase
-set smartcase
-set wrapscan
-set gdefault
-
-" cmd
-set wildmenu
-set history=5000
-
-"operating env
-set mouse=a
-
-" tab/space
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set autoindent
-set smartindent
-set cindent
-
-" yank
-set clipboard+=unnamed
 " key map
 nmap <Esc><Esc> :nohl<CR>
 let mapleader = ","
 tnoremap <Esc> <C-\><C-n>
 
-" encode
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set binary
-set bomb
-
 " auto comment off
 augroup auto_comment_off
-    autocmd!
-    autocmd BufEnter * setlocal formatoptions-=r
-    autocmd BufEnter * setlocal formatoptions-=o
+  autocmd!
+  autocmd BufEnter * setlocal formatoptions-=r
+  autocmd BufEnter * setlocal formatoptions-=o
 augroup END
 
-" fast scroll
-set ttyfast
-
-" reflect time
-set updatetime=250
-
-syntax on
-set background=dark
-colorscheme solarized
-
-filetype on
-
 augroup fileTypeIndent
-    autocmd!
-    autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
-    autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd!
+  autocmd BufNewFile,BufRead *.cpp setlocal tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.c setlocal tabstop=2 softtabstop=2 shiftwidth=2
 augroup END

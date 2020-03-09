@@ -1,60 +1,24 @@
 #autocomplete
 [[plugins]]
 repo='Shougo/deoplete.nvim'
-hook_add='''
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 0
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
-autocmd FileType python,c,cpp setlocal completeopt-=preview
-'''
+
+# ファイル操作
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+
+# 統合UI
+[[plugins]]
+repo = 'Shougo/denite.nvim'
 
 #syntaxチェッカー
 [[plugins]]
 repo='w0rp/ale'
-hook_add='''
-let g:ale_linters = {
-    \ 'python': ['flake8','black'],
-    \ 'ruby': ['rubocop'],
-    \ 'c' : ['gcc'],
-    \ 'cpp' : ['g++'],
-    \ }
-let g:ale_fixers = {
-    \'python':['black'],
-    \'ruby': ['rubocop'],
-    \'c':['clang-format'],
-    \'cpp':['clang-format'],
-    \ }
-let g:ale_sign_column_always = 1
-let g:ale_use_global_executables = 1
-let g:ale_lint_on_text_changed = 1
-nmap <silent> <S-f> <Plug>(ale_fix)
-let g:ale_python_flake8_args = '--max-line-length=150'
-let g:ale_python_autopep8_args = '--max-line-length=150'
-'''
 
 # LSP
 [[plugins]]
 repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
-hook_add = '''
-let g:LanguageClient_serverCommands = {
-    \ 'python' : ['pyls'],
-    \ 'ruby' : ['solargraph', 'stdio'],
-    \ 'c' : ['clangd'],
-    \ 'cpp': ['clangd'],
-    \ }
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_diagnosticsEnable = 0
-
-nnoremap K :call LanguageClient#textDocument_hover()<CR>
-'''
 
 #git
 [[plugins]]
@@ -64,25 +28,17 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo='airblade/vim-gitgutter'
 
+# color theme
+[[plugins]]
+repo="altercation/vim-colors-solarized"
+
 #powerline
 [[plugins]]
 repo='vim-airline/vim-airline'
-hook_add='''
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-'''
 
 #powerline theme
 [[plugins]]
 repo='vim-airline/vim-airline-themes'
-hook_add='''
-let g:airline_theme='solarized'
-let g:airline_solarized_bg='dark'
-'''
 
 #vim window size 変更
 [[plugins]]
@@ -92,6 +48,15 @@ repo='simeji/winresizer'
 [[plugins]]
 repo="sheerun/vim-polyglot"
 
-# color theme
+# 括弧補完
 [[plugins]]
-repo="altercation/vim-colors-solarized"
+on_i = 1
+repo='cohama/lexima.vim'
+
+# コメントアウト
+[[plugins]]
+repo='scrooloose/nerdcommenter'
+
+# インデント可視化
+[[plugins]]
+repo='Yggdroot/indentLine'
