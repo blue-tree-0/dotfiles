@@ -1,0 +1,21 @@
+{
+  "languageserver": {
+    "clangd": {
+      "command": "clangd",
+      "rootPatterns": [
+          "compile_flags.txt",
+          "compile_commands.json"
+      ],
+      "filetypes": ["c", "cpp"]
+    }
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["python"],
+  "python.jediEnabled": false,
+  "python.formatting.provider": "black",
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Args": [
+      "--ignore=E203,E501,W503,W504"
+  ]
+}

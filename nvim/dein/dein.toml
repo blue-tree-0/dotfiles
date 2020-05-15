@@ -1,30 +1,18 @@
-#autocomplete
+# LSP
 [[plugins]]
-repo='Shougo/deoplete.nvim'
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+merged = 0
 
 # ファイル操作
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 
-# 統合UI
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-
-#syntaxチェッカー
-[[plugins]]
-repo='w0rp/ale'
-
-# LSP
-[[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-
-#git
+# git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
-#git
+# git
 [[plugins]]
 repo='airblade/vim-gitgutter'
 
@@ -32,15 +20,15 @@ repo='airblade/vim-gitgutter'
 [[plugins]]
 repo="altercation/vim-colors-solarized"
 
-#powerline
+# powerline
 [[plugins]]
 repo='vim-airline/vim-airline'
 
-#powerline theme
+# powerline theme
 [[plugins]]
 repo='vim-airline/vim-airline-themes'
 
-#vim window size 変更
+# vim window size
 [[plugins]]
 repo='simeji/winresizer'
 

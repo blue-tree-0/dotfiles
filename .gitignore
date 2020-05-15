@@ -1,4 +1,6 @@
 .DS_Store
+coc/*
+configstore/*
 nvim/.netrwhist
 nvim/colors/
 nvim/dein/*
