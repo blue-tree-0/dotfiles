@@ -1,4 +1,4 @@
 aug space
   au!
-  autocmd BufWritePre *.{c,cpp,py} :%s/\s\+$//e
+  autocmd BufWritePre * :%s/\s\+$//e
 aug END

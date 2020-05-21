@@ -76,8 +76,9 @@ set clipboard+=unnamed
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set binary
 set bomb
 
 " speed up terminal connection
 set ttyfast
+
+set termguicolors

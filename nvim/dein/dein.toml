@@ -8,6 +8,18 @@ merged = 0
 [[plugins]]
 repo = 'Shougo/defx.nvim'
 
+# require defx-icons
+[[plugins]]
+repo = 'ryanoasis/vim-devicons'
+
+# defx costum
+[[plugins]]
+repo = 'kristijanhusak/defx-icons'
+
+# defx costum
+[[plugins]]
+repo = 'kristijanhusak/defx-git'
+
 # git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
@@ -19,6 +31,10 @@ repo='airblade/vim-gitgutter'
 # color theme
 [[plugins]]
 repo="altercation/vim-colors-solarized"
+
+# color theme
+[[plugins]]
+repo="lifepillar/vim-solarized8"
 
 # powerline
 [[plugins]]
@@ -39,7 +55,7 @@ repo="sheerun/vim-polyglot"
 # 括弧補完
 [[plugins]]
 on_i = 1
-repo='cohama/lexima.vim'
+repo='jiangmiao/auto-pairs'
 
 # コメントアウト
 [[plugins]]
@@ -48,3 +64,7 @@ repo='scrooloose/nerdcommenter'
 # インデント可視化
 [[plugins]]
 repo='Yggdroot/indentLine'
+
+# スタート画面
+[[plugins]]
+repo='mhinz/vim-startify'

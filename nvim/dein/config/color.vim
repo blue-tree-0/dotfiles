@@ -1,2 +1,2 @@
 set background=dark
-colorscheme solarized
+colorscheme solarized8
