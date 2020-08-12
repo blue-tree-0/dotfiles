@@ -2,9 +2,10 @@ if &compatible
   set nocompatible
 endif
 
-set runtimepath+=$HOME/dotfiles/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.config/nvim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/dotfiles/nvim
 
-let s:dein_dir = expand('$HOME/dotfiles/nvim/dein/')
+let s:dein_dir = expand('$HOME/.config/nvim/dein/')
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
